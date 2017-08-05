@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MachineLearning.iml" filepath="$PROJECT_DIR$/.idea/MachineLearning.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../Tutorials/MachineLearning/practice_projects/naive_bayes_tutorial/.idea/naive_bayes_tutorial.iml" filepath="$PROJECT_DIR$/../../Tutorials/MachineLearning/practice_projects/naive_bayes_tutorial/.idea/naive_bayes_tutorial.iml" />
     </modules>
   </component>
 </project>
