@@ -13133,7 +13133,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -13146,7 +13146,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="c1"># TODO: Calculate accuracy, precision and recall</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_greater_50k</span><span class="o">/</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
-<span class="n">recall</span> <span class="o">=</span> <span class="n">n_greater_50k</span><span class="o">/</span><span class="p">(</span><span class="n">n_greater_50k</span> <span class="o">+</span> <span class="n">n_records</span> <span class="o">-</span> <span class="n">n_at_most_50k</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">n_greater_50k</span><span class="o">/</span><span class="p">(</span><span class="n">n_greater_50k</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">precision</span> <span class="o">=</span> <span class="n">n_greater_50k</span><span class="o">/</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate F-score using the formula above for beta = 0.5 and correct values for precision and recall.</span>
@@ -13155,7 +13155,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <span class="n">fscore</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">beta</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">beta</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">precision</span><span class="p">)</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
 
 <span class="c1"># Print the results </span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Naive Predictor: [Accuracy score: </span><span class="si">{:.4f}</span><span class="s2">, F-score: </span><span class="si">{:.4f}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">fscore</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Naive Predictor: [Accuracy score: </span><span class="si">{:.4f}</span><span class="s2">, Precision: </span><span class="si">{:.4f}</span><span class="s2">, Recall: </span><span class="si">{:.4f}</span><span class="s2">, F-score: </span><span class="si">{:.4f}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">fscore</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -13170,7 +13170,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Naive Predictor: [Accuracy score: 0.2478, F-score: 0.2756]
+<pre>Naive Predictor: [Accuracy score: 0.2478, Precision: 0.2478, Recall: 1.0000, F-score: 0.2917]
 </pre>
 </div>
 </div>
@@ -13224,26 +13224,26 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <p><strong>Answer: </strong></p>
 <p><strong>Gaussian Naive Bayes</strong></p>
 <ul>
-<li>Can be use to classify SMS messages, emails as spam or not spam.</li>
-<li>Naive Bayes requires a small amount of training data to estimate the necessary parameters. Naive Bayes learners and classifiers can be extremely fast compared to more sophisticated methods. The decoupling of the class conditional feature distributions means that each distribution can be independently estimated as a one dimensional distribution. This in turn helps to alleviate problems stemming from the curse of dimensionality.</li>
-<li>On the flip side, although naive Bayes is known as a decent classifier, it is known to be a bad estimator, so the probability outputs from predict_proba are not to be taken too seriously.</li>
-<li>We can calculate P(&gt;50k|features A, features B, features C...) easily</li>
+<li>Real-world application: Can be use to classify SMS messages, emails as spam or not spam.</li>
+<li>Strengths: Naive Bayes requires a small amount of training data to estimate the necessary parameters. Naive Bayes learners and classifiers can be extremely fast compared to more sophisticated methods. The decoupling of the class conditional feature distributions means that each distribution can be independently estimated as a one dimensional distribution. This in turn helps to alleviate problems stemming from the curse of dimensionality.</li>
+<li>Weaknesses: On the flip side, although naive Bayes is known as a decent classifier, it is known to be a bad estimator, so the probability outputs from predict_proba are not to be taken too seriously.</li>
+<li>Applicability to current problem: Naive Bayes is good for a large dataset with few features.</li>
 <li>Reference: <a href="http://scikit-learn.org/stable/modules/naive_bayes.html">http://scikit-learn.org/stable/modules/naive_bayes.html</a></li>
 </ul>
 <p><strong>Support Vector Machines (SVM)</strong></p>
 <ul>
-<li>Hand-written characters can be recognized using SVM.</li>
-<li>Effective in high dimensional spaces. Still effective in cases where number of dimensions is greater than the number of samples. Uses a subset of training points in the decision function (called support vectors), so it is also memory efficient. Versatile: different Kernel functions can be specified for the decision function.</li>
-<li>If the number of features is much greater than the number of samples, avoid over-fitting in choosing Kernel functions and regularization term is crucial. SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation.</li>
-<li>This model can be a good candidate for the problem because: 1. It's a classification problem. 2. Number of samples &lt;100K</li>
+<li>Real-world application: Hand-written characters can be recognized using SVM.</li>
+<li>Strengths: Effective in high dimensional spaces. Still effective in cases where number of dimensions is greater than the number of samples. Uses a subset of training points in the decision function (called support vectors), so it is also memory efficient. Versatile: different Kernel functions can be specified for the decision function.</li>
+<li>Weaknesses: If the number of features is much greater than the number of samples, avoid over-fitting in choosing Kernel functions and regularization term is crucial. SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation.</li>
+<li>Applicability to current problem: SVM is a good candidate because there are some features that can define the boundary clearly. Also SVM can be optimized by  fine tuning parameters.</li>
 <li>Reference: <a href="https://en.wikipedia.org/wiki/Support_vector_machine#Applications">https://en.wikipedia.org/wiki/Support_vector_machine#Applications</a></li>
 </ul>
 <p><strong>Logistic Regression</strong></p>
 <ul>
-<li>Image Segmentation and Categorization</li>
-<li>The first advandtage is you can include more than one explanatory variable (dependent variable) and those can either be dichotomous, ordinal, or continuous. The second is that logistic regression provides a quantified value for the strength of the association adjusting for other variables (removes confounding effects). The exponential of coefficients correspond to odd ratios for the given factor. </li>
-<li>Need enough participants with each possible set of explanatory variable. Logistic regression combines both binomial and normal distribution. This can sometimes cause problems. Defining variables to enter in the model, adding, or removing explanatory variables can be complicated and must be carefully planned. </li>
-<li>Logistic Regression is also a good candidate because this is a classification problem.</li>
+<li>Real-world application: Image Segmentation and Categorization</li>
+<li>Strengths: The first advandtage is you can include more than one explanatory variable (dependent variable) and those can either be dichotomous, ordinal, or continuous. The second is that logistic regression provides a quantified value for the strength of the association adjusting for other variables (removes confounding effects). The exponential of coefficients correspond to odd ratios for the given factor. </li>
+<li>Weaknesses: Need enough participants with each possible set of explanatory variable. Logistic regression combines both binomial and normal distribution. This can sometimes cause problems. Defining variables to enter in the model, adding, or removing explanatory variables can be complicated and must be carefully planned. </li>
+<li>Applicability to current problem: Logistic Regression assumes that dependant variables can be predicted by independant variables. In our case, income can be predicted by features. This assumption is valid in this dataset.</li>
 <li>Reference: <a href="https://www.researchgate.net/post/How_is_logistic_regression_used_What_conditions_and_types_of_variables_should_be_used">https://www.researchgate.net/post/How_is_logistic_regression_used_What_conditions_and_types_of_variables_should_be_used</a></li>
 </ul>
 
@@ -13276,7 +13276,7 @@ In the code block below, you will need to implement the following:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import two metrics from sklearn - fbeta_score and accuracy_score</span>
@@ -14207,7 +14207,7 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>Logistic regression is another generalized linear model procedure using the same basic formula, but instead of the continuous Y, it is regressing for the probability of a categorical outcome. In simplest form, this means that we're considering just one outcome variable and two states of that variable- either 0 or 1.</li>
+<li>Logistic regression is a classification algorithm. It tries to fit the best fit line that can separate the data into 2 categories. In simplest form, this means that we're considering just one outcome variable and two states of that variable- either 0 or 1.</li>
 <li>Citation: <a href="https://stats.stackexchange.com/questions/29325/what-is-the-difference-between-linear-regression-and-logistic-regression">https://stats.stackexchange.com/questions/29325/what-is-the-difference-between-linear-regression-and-logistic-regression</a></li>
 </ul>
 
@@ -14434,8 +14434,13 @@ The result from optimized model are much better than benchmarks found earlier in
 <li>age</li>
 </ol>
 <ul>
-<li>Occupation seems to has the most impact on salary, because your income largely depends on your job.
-Native country is also important because there is a huge difference between first-world and third-world country</li>
+<li>Occupation seems to has the most impact on salary, because your income largely depends on your job.</li>
+<li>Native country is also important because there is a huge difference between in income of first-world and third-world country.</li>
+<li>Education and experience is important because statistics show that for every additional level of education a worker achieves, their earning potential increases. On average, workers with a high school diploma earn more than those without a diploma. </li>
+<li>Hours-per-week might relavant because you'll get paid more if you work more.</li>
+<li>Age also important because someone has just graduated from college are more likely to earn less than someone at their career peek.</li>
+<li>References:
+<a href="http://www.careerprofiles.info/salary-factors.html">http://www.careerprofiles.info/salary-factors.html</a></li>
 </ul>
 
 </div>
@@ -14827,7 +14832,10 @@ UsMYACVJkhrGAChJktQwBkBJkqSGMQBKkiQ1jAFQkiSpYX4Bwey9TLfnJCsAAAAASUVORK5CYII=
 <p><strong>Answer:</strong></p>
 <ul>
 <li>I'm quite supprise that occupation and country are not in the top 5.</li>
-<li>I think that these feature more relavant in this database. If we have a bigger and more diverse database, occupation and country should be in the top 5.</li>
+<li>I think that these feature (capital-gain, capital-loss, married-civ-spouse,...) are more relavant and have more predictive power in this database. However, if we have a bigger and more diverse database, I think occupation and country should be in the top 5.</li>
+<li>Based on these articals, Geographic Location, Industry, Education, Experience and Education are the top factors that affect salary. 
+<a href="http://work.chron.com/factors-affect-starting-salary-8712.html">http://work.chron.com/factors-affect-starting-salary-8712.html</a>
+<a href="http://www.careerprofiles.info/salary-factors.html">http://www.careerprofiles.info/salary-factors.html</a></li>
 </ul>
 
 </div>
@@ -14918,7 +14926,7 @@ F-score on testing data: 0.6548
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-Final F-score trained on reduced data is reduced by 3%, quite small compared to the model trained on full data/
+Final F-score trained on reduced data is reduced by 3%, quite small compared to the model trained on full data.
 If training time was a factor, and the score is only reduced by 3%, I would consider use the reduced data.</p>
 
 </div>
